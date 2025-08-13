@@ -1,0 +1,63 @@
+<!-- <tbody class="w-full  table">
+    <tr>
+        <td><img src={{countryInfo()?.flagPng}} width="220px" height="220" alt={{countryInfo()}} class="m-auto"></td>
+    </tr>
+    <tr>
+        <td class="text-center text-2xl">{{countryInfo()?.name}}</td>
+    </tr>
+    <tr>
+        <td class="text-center text-xl">Capital: {{countryInfo()?.capital}}</td>
+    </tr>
+    <tr>
+        <td class="text-center text-xl">Bandera: {{countryInfo()?.flag}}</td>
+    </tr>
+    <tr>
+        <td class="text-center text-xl">Poblacion: {{countryInfo()?.population}}</td>
+    </tr>
+</tbody> -->
+
+<div class="hero bg-base-200 min-h-screen">
+    <div class="hero-content flex-col">
+
+        <div class="flex justify-center items-center w-full shadow-2xl">
+            <div class="flex flex-col">
+                <img src={{countryInfo()?.flagPng}} class="w-50" alt={{countryInfo()?.name}}>
+                <span>{{countryInfo()?.name}}</span>
+            </div>
+            <div class="flex">
+                <div class="divider divider-horizontal"></div>
+            </div>
+            <div>
+                <img src={{countryInfo()?.coatArms}} class="w-45" alt={{countryInfo()?.name}}>
+                <span>Escudo</span>
+            </div>
+
+
+
+        </div>
+        <div class="stats shadow">
+            <div class="stat place-items-center">
+                <div class="stat-title">Capital</div>
+                <div class="stat-value">{{countryInfo()?.capital}}</div>
+                <div class="stat-desc">Lat.Lon: {{countryInfo()?.latLng}}</div>
+            </div>
+
+            <div class="stat place-items-center">
+                <div class="stat-title">Población</div>
+                <div class="stat-value text-secondary">{{countryInfo()?.population}}</div>
+                <div class="stat-desc text-secondary"></div>
+            </div>
+
+            <div class="stat place-items-center">
+                <div class="stat-title">Area</div>
+                <div class="stat-value">{{countryInfo()?.area}}</div>
+                <div class="stat-desc">↘︎ 90 (14%)</div>
+            </div>
+            <div class="stat place-items-center">
+                <div class="stat-title">New Registers</div>
+                <div class="stat-value">1,200</div>
+                <div class="stat-desc">↘︎ 90 (14%)</div>
+            </div>
+        </div>
+    </div>
+</div>

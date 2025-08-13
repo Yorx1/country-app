@@ -1,0 +1,11 @@
+@if (countryResources.isLoading()) {
+<tr>
+    <td></td>
+</tr>
+}
+@if (countryResources.error()) {
+<not-found></not-found>
+}
+@if(countryResources.hasValue()){
+<country-information  [countryInfo]="countryResources.value()!"></country-information>
+}
