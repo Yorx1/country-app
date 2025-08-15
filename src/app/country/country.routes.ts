@@ -5,6 +5,8 @@ import { ByCountryComponent } from './pages/by-country/by-country-page.component
 import { ByRegionPageComponent } from './pages/by-region-page/by-region-page.component';
 import { CountryPageComponent } from './pages/country-page/country-page.component';
 
+
+
 export const CountryRoutes: Routes = [
   {
     path: '',
@@ -20,8 +22,9 @@ export const CountryRoutes: Routes = [
       },
       {
         path: 'by-region',
-        component: ByRegionPageComponent
+        component: ByRegionPageComponent,
       },
+
       {
         path: 'by/:code',
         component: CountryPageComponent

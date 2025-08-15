@@ -1,5 +1,8 @@
 <country-search-input placeholder="Buscar por Pais" (value)="query.set($event)" />
 
-
+@if (countryResources.error()) {
+<not-found></not-found>
+}@else {
 <app-country-list [countries]="countryResources.value() ?? []" [isLoading]="countryResources.isLoading()"
-    [errorMessage]="countryResources.error()" [isEmpty]="countryResources.value()?.length === 0"></app-country-list>
+    [isEmpty]="countryResources.value()?.length === 0"></app-country-list>
+}

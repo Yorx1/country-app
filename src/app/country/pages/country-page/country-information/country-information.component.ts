@@ -1,11 +1,16 @@
 import { Component, input } from '@angular/core';
 import { Country } from '../../../interfaces/country.interface';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'country-information',
-  imports: [],
+  imports: [DecimalPipe],
   templateUrl: './country-information.component.html',
 })
 export class CountryInformationComponent { 
   countryInfo = input<Country>()
+
+  dateCurrent(){
+    return new Date().getFullYear()
+  }
 }

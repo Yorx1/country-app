@@ -1,1 +1,17 @@
-<!-- <app-country-list/> -->
+<section class="flex">
+    <ul class="menu bg-base-200 sm:menu-horizontal gap-3 rounded-box">
+        @for (region of regions; track region) {
+        <li>
+            <a (click)="regionValue.set(region)" class="btn btn-soft" [class.btn-primary]="regionValue() === region">
+                {{region}}
+            </a>
+        </li>
+        }
+    </ul>
+</section>
+@if (regionsResource.error()) {
+<not-found></not-found>
+}@else {
+<app-country-list [countries]="regionsResource.value() ?? []"
+    [isLoading]="regionsResource.isLoading()"></app-country-list>
+}

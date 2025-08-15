@@ -7,7 +7,8 @@ export interface Country {
     population: number,
     latLng: number[]
     area: number
-    traslation: {}
+    traslation: { [key: string]: { [key: string]: {} } }
     coatArms: string | undefined
     continents: string[]
+    subRegion:string
 }

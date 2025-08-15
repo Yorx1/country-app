@@ -20,44 +20,52 @@
     <div class="hero-content flex-col">
 
         <div class="flex justify-center items-center w-full shadow-2xl">
-            <div class="flex flex-col">
+            <div class="flex flex-col items-center gap-2">
                 <img src={{countryInfo()?.flagPng}} class="w-50" alt={{countryInfo()?.name}}>
                 <span>{{countryInfo()?.name}}</span>
             </div>
             <div class="flex">
-                <div class="divider divider-horizontal"></div>
+                <div class="divider divider-accent divider-horizontal min-h-50 divider-default"></div>
             </div>
-            <div>
+            <div class="flex flex-col items-center gap-2">
                 <img src={{countryInfo()?.coatArms}} class="w-45" alt={{countryInfo()?.name}}>
                 <span>Escudo</span>
             </div>
-
-
-
         </div>
         <div class="stats shadow">
             <div class="stat place-items-center">
                 <div class="stat-title">Capital</div>
-                <div class="stat-value">{{countryInfo()?.capital}}</div>
+                <div class="stat-value text-primary">{{countryInfo()?.capital}}</div>
                 <div class="stat-desc">Lat.Lon: {{countryInfo()?.latLng}}</div>
             </div>
 
             <div class="stat place-items-center">
                 <div class="stat-title">Población</div>
-                <div class="stat-value text-secondary">{{countryInfo()?.population}}</div>
-                <div class="stat-desc text-secondary"></div>
+                <div class="stat-value text-secondary">{{countryInfo()?.population | number}}</div>
+                <div class="stat-desc">{{dateCurrent()}}</div>
             </div>
 
             <div class="stat place-items-center">
                 <div class="stat-title">Area</div>
-                <div class="stat-value">{{countryInfo()?.area}}</div>
-                <div class="stat-desc">↘︎ 90 (14%)</div>
+                <div class="stat-value text-info">{{countryInfo()?.area | number}}</div>
+                <div class="stat-desc">Km²</div>
             </div>
             <div class="stat place-items-center">
-                <div class="stat-title">New Registers</div>
-                <div class="stat-value">1,200</div>
-                <div class="stat-desc">↘︎ 90 (14%)</div>
+                <div class="stat-title">Continente</div>
+                <div class="stat-value">{{countryInfo()?.continents}}</div>
+                <div class="stat-desc">{{countryInfo()?.subRegion}}</div>
             </div>
+
+        </div>
+        <span class="text-2xl text-emerald-500">Traslations</span>
+        <div class="flex gap-2">
+            <div class="badge badge-outline badge-primary">{{countryInfo()?.traslation?.['ara']?.['common']}}</div>
+            <div class="badge badge-outline badge-secondary">{{countryInfo()?.traslation?.['jpn']?.['common']}}</div>
+            <div class="badge badge-outline badge-accent">{{countryInfo()?.traslation?.['spa']?.['common']}}</div>
+            <div class="badge badge-outline badge-info">{{countryInfo()?.traslation?.['swe']?.['common']}}</div>
+            <div class="badge badge-outline badge-success">{{countryInfo()?.traslation?.['rus']?.['common']}}</div>
+            <div class="badge badge-outline badge-warning">{{countryInfo()?.traslation?.['por']?.['common']}}</div>
+            <div class="badge badge-outline badge-error">{{countryInfo()?.traslation?.['fra']?.['common']}}</div>
         </div>
     </div>
 </div>

@@ -1,24 +1,38 @@
-import { Component, inject, resource, signal } from '@angular/core';
+import { Component, inject, linkedSignal, resource, signal } from '@angular/core';
 import { SearchInputComponent } from "../../../shared/components/search-input/search-input.component";
 import { CountryListComponent } from "../../components/country-list/country-list.component";
 import { CountryService } from '../../services/country.service';
 import { Country } from '../../interfaces/country.interface';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, single } from 'rxjs';
+import { NotFoundComponent } from "../../../shared/components/not-found/not-found.component";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-by-capital-page',
   templateUrl: './by-capital-page.component.html',
-  imports: [SearchInputComponent, CountryListComponent]
+  imports: [SearchInputComponent, CountryListComponent, NotFoundComponent]
 })
 export class ByCapitalPageComponent {
 
+  activatedRoute = inject(ActivatedRoute)
+  queryParams = this.activatedRoute.snapshot.queryParamMap.get('query') ?? ''
+  router = inject(Router)
+
+  query = signal(this.queryParams)
+
   countryService = inject(CountryService);
-  query = signal('');
 
   countryResources = resource({
     params: () => ({ 'query': this.query() }),
     loader: async ({ params }) => {
       if (!params.query) return [];
+      console.log(params.query);
+      
+      this.router.navigate(['country/by-capital'],{
+        queryParams:{
+          query:params.query,
+        }
+      })
       return await firstValueFrom(
         this.countryService.searchByCapital(params.query)
       )
