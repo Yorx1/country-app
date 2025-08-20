@@ -7,14 +7,11 @@ import { Component, effect, input, linkedSignal, output, signal } from '@angular
 })
 export class SearchInputComponent {
 
-
-
   placeholder = input<string>('Buscar')
   value = output<string>()
-  initialValue = input<string>()
+  initialValue = input<string>('')
 
-
-  inputValue = linkedSignal<string>(() => this.initialValue() ?? '')
+  inputValue = linkedSignal<string>(() => this.initialValue())
 
   debounceEffect = effect((onCleanup) => {
     const value = this.inputValue()

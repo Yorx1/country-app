@@ -14,7 +14,7 @@ export class CountryPageComponent {
 
   countryCode = inject(ActivatedRoute).snapshot.params['code']
   countryService = inject(CountryService)
-
+  
 
   countryResources = rxResource({
     params: () => ({ 'code': this.countryCode }),

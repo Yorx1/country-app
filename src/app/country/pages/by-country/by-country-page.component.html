@@ -1,4 +1,4 @@
-<country-search-input placeholder="Buscar por Pais" (value)="query.set($event)" />
+<country-search-input placeholder="Buscar por Pais" (value)="query.set($event)" [initialValue]="query()"/>
 
 @if (countryResources.error()) {
 <not-found></not-found>

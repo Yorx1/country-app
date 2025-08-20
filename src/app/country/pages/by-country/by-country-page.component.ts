@@ -5,7 +5,7 @@ import { CountryService } from '../../services/country.service';
 import { of } from 'rxjs';
 import { rxResource } from '@angular/core/rxjs-interop'
 import { NotFoundComponent } from "../../../shared/components/not-found/not-found.component";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-by-country-page',
@@ -15,16 +15,23 @@ import { ActivatedRoute } from '@angular/router';
 export class ByCountryComponent {
 
   countryService = inject(CountryService);
-
   ativatedRoute = inject(ActivatedRoute)
-  queryParams = this.ativatedRoute.snapshot.queryParamMap.get('query') ?? ''
+  router = inject(Router)
 
+
+  queryParams = this.ativatedRoute.snapshot.queryParamMap.get('query') ?? ''
   query = signal(this.queryParams)
 
   countryResources = rxResource({
     params: () => ({ 'query': this.query() }),
     stream: ({ params }) => {
       console.log(params.query);
+
+      this.router.navigate(['country/by-country'], {
+        queryParams: {
+          query: params.query
+        }
+      })
 
       if (!params.query) return of([]);
       return this.countryService.searchByCountry(params.query)

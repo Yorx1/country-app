@@ -15,12 +15,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ByCapitalPageComponent {
 
   activatedRoute = inject(ActivatedRoute)
-  queryParams = this.activatedRoute.snapshot.queryParamMap.get('query') ?? ''
+  countryService = inject(CountryService)
   router = inject(Router)
-
+  
+  queryParams = this.activatedRoute.snapshot.queryParamMap.get('query') ?? ''
   query = signal(this.queryParams)
 
-  countryService = inject(CountryService);
 
   countryResources = resource({
     params: () => ({ 'query': this.query() }),
